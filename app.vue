@@ -1,12 +1,16 @@
 <template>
-  <NuxtLoadingIndicator color="#14b8a6" />
-  <AppNavbar />
-  <div class="h-32"></div>
-  <UContainer>
-    <NuxtPage />
-  </UContainer>
-  <div class="h-32"></div>
-  <AppFooter />
+  <!-- <NuxtLoadingIndicator color="#14b8a6" /> -->
+  <!-- <AppNavbar /> -->
+  <!-- <div class="h-32"></div> -->
+  <!-- <UContainer> -->
+    <NuxtLayout>
+      <v-app>
+        <NuxtPage />
+      </v-app>
+    </NuxtLayout>
+  <!-- </UContainer> -->
+  <!-- <div class="h-32"></div> -->
+  <!-- <AppFooter /> -->
 </template>
 
 <style>
