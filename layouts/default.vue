@@ -3,11 +3,9 @@
   
         <v-app-bar
       class="px-3"
-      density="dense"
       elevation="4"
       scroll-behavior="fade-image elevate"
   scroll-threshold="251"
-  image="https://picsum.photos/1920/1080?random"
     >
       <v-avatar
         color="grey-darken-1"
