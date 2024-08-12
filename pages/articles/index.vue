@@ -1,34 +1,20 @@
 <template>
-  <main class="min-h-screen">
+  <main>
 
-      <nav>
-    <ContentNavigation v-slot="{ navigation }">
-      <ul>
-        <li v-for="link of navigation" :key="link._path">
-          <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
-        </li>
-      </ul>
-    </ContentNavigation>
-  </nav>
-    <v-card>
-
-      <!-- <data-iterator :articles="query" title="FOOD RATING" /> -->
-
-
-
-
-
-
-    <ContentList :query="query" v-slot="{ list }">
-      {{ list }}
-      <div v-for="article in list" :key="article._path">
-        <h2>{{ article.title }}</h2>
-        <p>{{ article.description }}</p>
-      </div>
+    <ContentList path="/articles/foodrating/parmegianologo" v-slot="{ list }">
+      <data-iterator :articles="list" title="Parmegianas"/>
+    </ContentList>
+    <ContentList path="/articles/foodrating/vinhos" v-slot="{ list }">
+      <data-iterator :articles="list" title="Vinhos"/>
+    </ContentList>
+    <ContentList path="/articles/dev" v-slot="{ list }">
+      <data-iterator :articles="list" title="Dev"/>
+    </ContentList>
+    <ContentList path="/articles/linguagens" v-slot="{ list }">
+      <data-iterator :articles="list" title="Linguagens"/>
     </ContentList>
 
 
-  </v-card>
   </main>
 </template>
 
@@ -43,6 +29,8 @@ useSeoMeta({
 
 const query = { path: '/foodrating/parmegianologo', sort: [{ date: -1 }] }
 // const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+
+const articlesQuery = queryContent('articles')
 
 
 const { data: articles } = await useAsyncData("all-articles", () =>

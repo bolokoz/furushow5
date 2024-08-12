@@ -1,9 +1,6 @@
 <template>
   <main class="">
-    <div
-      class="prose dark:prose-invert prose-blockquote:not-italic prose-pre:bg-gray-900 prose-img:ring-1 prose-img:ring-gray-200 dark:prose-img:ring-white/10 prose-img:rounded-lg"
-    >
-    <h1>AAA</h1>
+    Title: {{ page.title }}
     <ContentDoc>
       <template v-slot="{ doc }">
         <article>
@@ -14,19 +11,18 @@
       <template #not-found>
         <h1>Document not found</h1>
       </template>
+      <template #empty>
+        <h1>Documento vazio</h1>
+      </template>
     </ContentDoc>
-    </div>
   </main>
 </template>
 
 <script setup>
 const route = useRoute();
-const { slug } = route.params;
-useSeoMeta({
-  ogImage: `https://fayazahmed.com/articles/${slug}.png`,
-  twitterCard: "summary_large_image",
-  articleAuthor: "Fayaz Ahmed",
-});
+
+const { data: page } = await useAsyncData('my-page', queryContent(route.path).findOne)
+
 </script>
 <style>
 .prose h2 a,

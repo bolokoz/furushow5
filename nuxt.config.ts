@@ -42,6 +42,11 @@ export default defineNuxtConfig({
       bodyAttrs: {
         class: "antialiased bg-gray-50 dark:bg-black min-h-screen",
       },
+      script: [
+        {
+          src: 'https://widget.cloudinary.com/v2.0/global/all.js', // Cloudinary Widget JS
+        },
+      ],
     },
   },
   content: {
