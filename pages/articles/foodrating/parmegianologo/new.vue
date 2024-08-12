@@ -67,11 +67,7 @@ star: false
 //github upload shenanigans
 
 // Replace with your own GitHub settings
-<<<<<<< HEAD
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN // This should be stored securely
-=======
-const GITHUB_TOKEN =  process.env.GITHUB_TOKEN
->>>>>>> d563599... env variables now
+const GITHUB_TOKEN =  config.public.GITHUB_TOKEN
 const GITHUB_USERNAME = 'bolokoz'
 const GITHUB_REPO = 'furushow5'
 const GITHUB_BRANCH = 'main'
