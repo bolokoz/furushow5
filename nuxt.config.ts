@@ -7,13 +7,13 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
-    "@nuxt/ui",
-    "nuxt-icon",
-    "@nuxtjs/google-fonts",
-    "@nuxtjs/fontaine",
+    // "@nuxt/ui",
+    // "nuxt-icon",
+    // "@nuxtjs/google-fonts",
+    // "@nuxtjs/fontaine",
     "@nuxt/image",
     "@nuxt/content",
-    "@nuxthq/studio",
+    // "@nuxthq/studio",
     "@vueuse/nuxt",
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
@@ -34,24 +34,19 @@ export default defineNuxtConfig({
       GITHUB_TOKEN: process.env.GITHUB_TOKEN
     }
   },
-  ui: {
-    icons: ["heroicons", "lucide"],
-  },
+  // ui: {
+  //   icons: ["heroicons", "lucide"],
+  // },
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
-      htmlAttrs: {
-        lang: "en",
-        class: "h-full",
-      },
-      bodyAttrs: {
-        class: "antialiased bg-gray-50 dark:bg-black min-h-screen",
-      },
-      script: [
-        {
-          src: 'https://widget.cloudinary.com/v2.0/global/all.js', // Cloudinary Widget JS
-        },
-      ],
+      // htmlAttrs: {
+      //   lang: "en",
+      //   class: "h-full",
+      // },
+      // bodyAttrs: {
+      //   class: "antialiased bg-gray-50 dark:bg-black min-h-screen",
+      // },
     },
   },
   content: {
@@ -59,10 +54,10 @@ export default defineNuxtConfig({
       theme: "github-dark",
     },
   },
-  googleFonts: {
-    display: "swap",
-    families: {
-      Inter: [400, 500, 600, 700, 800, 900],
-    },
-  },
+  // googleFonts: {
+  //   display: "swap",
+  //   families: {
+  //     Inter: [400, 500, 600, 700, 800, 900],
+  //   },
+  // },
 });
