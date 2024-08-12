@@ -25,8 +25,5 @@ const { data: page } = await useAsyncData('my-page', queryContent(route.path).fi
 
 </script>
 <style>
-.prose h2 a,
-.prose h3 a {
-  @apply no-underline;
-}
+
 </style>

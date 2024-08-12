@@ -29,6 +29,11 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    public: {
+      GITHUB_TOKEN: process.env.GITHUB_TOKEN
+    }
+  },
   ui: {
     icons: ["heroicons", "lucide"],
   },

@@ -1,4 +1,7 @@
 <script setup>
+
+const config = useRuntimeConfig()
+
 const valid = ref(false);
 const restaurante = ref("");
 const description = ref("");
@@ -28,6 +31,9 @@ const loading = ref(false);
 // create markdown
 
 async function handleSubmit() {
+
+loading.value = true
+
   let frontmatter = `---
 title: ${restaurante.value}
 preco: ${price.value}
@@ -52,32 +58,37 @@ star: false
   let link = document.createElement("a");
   link.href = url;
   link.download = `${restaurante.value}.md`;
-  link.click();
   URL.revokeObjectURL(url);
+
+//   let filename = `${restaurante.value}.md`
 
 
 
 //github upload shenanigans
 
 // Replace with your own GitHub settings
+<<<<<<< HEAD
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN // This should be stored securely
+=======
+const GITHUB_TOKEN =  process.env.GITHUB_TOKEN
+>>>>>>> d563599... env variables now
 const GITHUB_USERNAME = 'bolokoz'
 const GITHUB_REPO = 'furushow5'
 const GITHUB_BRANCH = 'main'
 const PATH = 'content/articles/foodrating/parmegianologo'
 
   // Convert content to Base64 (required by GitHub API)
-  const contentBase64 = btoa(url)
+  const contentBase64 = btoa(unescape(encodeURIComponent(frontmatter)))
 
   // Upload the file to GitHub
-  const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${path}/${link.download}`, {
+  const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${PATH}/${link.download}`, {
     method: 'PUT',
     headers: {
-      'Authorization': `token ${GITHUB_TOKEN}`,
+      'Authorization': `token ${config.public.GITHUB_TOKEN}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      message: `Add ${link.download}`,
+      message: `Added ${link.download} from api`,
       content: contentBase64,
       branch: GITHUB_BRANCH,
     }),
@@ -89,6 +100,8 @@ const PATH = 'content/articles/foodrating/parmegianologo'
     const error = await response.json()
     console.error('File upload failed:', error)
   }
+
+  loading.value = false
 }
 
 // cloudinary shenanigans
