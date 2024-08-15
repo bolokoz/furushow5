@@ -1,11 +1,12 @@
-
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   build: {
     transpile: ['vuetify'],
   },
+
   modules: [
     // "@nuxt/ui",
     // "nuxt-icon",
@@ -22,6 +23,7 @@ export default defineNuxtConfig({
       })
     },
   ],
+
   vite: {
     vue: {
       template: {
@@ -29,11 +31,13 @@ export default defineNuxtConfig({
       },
     },
   },
+
   runtimeConfig: {
     public: {
       GITHUB_TOKEN: process.env.GITHUB_TOKEN
     }
   },
+
   // ui: {
   //   icons: ["heroicons", "lucide"],
   // },
@@ -47,17 +51,23 @@ export default defineNuxtConfig({
       // bodyAttrs: {
       //   class: "antialiased bg-gray-50 dark:bg-black min-h-screen",
       // },
+      script: [
+          // {src: "https://upload-widget.cloudinary.com/latest/global/all.js", type: 'text/javascript' }
+      ]
     },
   },
-  content: {
-    highlight: {
-      theme: "github-dark",
-    },
-  },
+
   // googleFonts: {
   //   display: "swap",
   //   families: {
   //     Inter: [400, 500, 600, 700, 800, 900],
   //   },
   // },
+  content: {
+    highlight: {
+      theme: "github-dark",
+    },
+  },
+
+  compatibilityDate: "2024-08-14",
 });

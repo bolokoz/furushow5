@@ -3,18 +3,12 @@
 // cloudinary shenanigans
 
 const files = ref([]);
-const uploadedFiles = ref([]);
+// const uploadedFiles = ref([]);
 const loading = ref(false)
 
+const emit = defineEmits(['uploadedClounary'])
 
-
-defineProps({
-    folder: String
-})
-
-const form = defineModel({
-    type: Object
-})
+const uploadedFiles = ref([])
 
 
 const cloudName = "boloko";
@@ -65,15 +59,15 @@ function uploadFile(file) {
     //   snackbarText.value = url;
     //   snackbar.value = true;
       loading.value = false;
+
     })
     .catch((error) => {
       console.error("Error uploading the file:", error);
       //   snackbarText.value = error;
       //   snackbar.value = true;
       loading.value = false;
-    });
+    })
 }
-
 </script>
 
 <template>
