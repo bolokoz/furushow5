@@ -2,10 +2,9 @@
     <v-app id="inspire">
   
         <v-app-bar
-      class="px-3"
+      class="px-1"
       elevation="4"
-      scroll-behavior="fade-image elevate"
-  scroll-threshold="251"
+      scroll-behavior="hide"
     >
       <v-avatar
         color="grey-darken-1"
