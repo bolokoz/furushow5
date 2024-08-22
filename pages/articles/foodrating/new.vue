@@ -1,6 +1,7 @@
 <script setup>
 const config = useRuntimeConfig();
 
+
 const price = ref(1);
 const porcao = ref(1);
 
@@ -159,17 +160,36 @@ function uploadFile(file) {
       snackbarText.value = url;
       snackbar.value = true;
       loading.value = false;
+      navigateTo({ path: '/new' })
     })
     .catch((error) => {
       console.error("Error uploading the file:", error);
-      //   snackbarText.value = error;
-      //   snackbar.value = true;
+        snackbarText.value = error;
+        snackbar.value = true;
       loading.value = false;
     });
 }
+
+
+
 </script>
 
 <template>
+  <v-snackbar
+      v-model="snackbar"
+    >
+      {{ text }}
+
+      <template v-slot:actions>
+        <v-btn
+          color="pink"
+          variant="text"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   <v-card title="Novo" class="mx-1 mt-5" elevation="5">
     <v-container>
       <FoodratingStepper />

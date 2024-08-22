@@ -5,6 +5,9 @@ const form = reactive({});
 const today = new Date()
 form.date = today
 
+const snackbar = ref(false)
+const snackbarText = ref('')
+
 const tickLabels = {
   1: "Ruim",
   2: "Abaixo",
@@ -19,13 +22,6 @@ const uploadedFiles = ref([]);
 const loading = ref(false);
 const cloudName = "boloko";
 const uploadPreset = "furushow_parme";
-
-// function onFilesSelected(event) {
-//   const file = event.target.files[0];
-//   if (file) {
-//     imageUrl.value = URL.createObjectURL(file);
-//   }
-// }
 
 function handleFiles() {
   console.log("handle files", files.value.length);
@@ -57,9 +53,14 @@ function uploadFile(file) {
       img.src = tokens.join("/");
       img.alt = data.public_id;
       uploadedFiles.value.push(img);
+
       loading.value = false;
+      snackbarText.value = 'Uploaded to Cloudinary'
+      snackbar.value = true
     })
     .catch((error) => {
+      snackbarText.value = error
+      snackbar.value = true
       console.error("Error uploading the file:", error);
       loading.value = false;
     });
@@ -109,11 +110,31 @@ async function handleSubmit() {
         branch: GITHUB_BRANCH,
       }),
     }
-  );
+  ).then((res) => {
+
+    snackbarText.value = 'Uploaded to Github'
+    snackbar.value = true
+    navigateTo('/articles')
+  })
 }
 </script>
 
 <template>
+    <v-snackbar
+      v-model="snackbar"
+    >
+      {{ snackbarText }}
+
+      <template v-slot:actions>
+        <v-btn
+          color="pink"
+          variant="text"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   <v-card title="Vinho v1" class="mx-1 mt-5" elevation="5">
     <v-container>
       <v-text-field
@@ -170,8 +191,6 @@ async function handleSubmit() {
       <span>{{ markdown }}</span>
     </v-container>
     <v-card-actions>
-      <v-btn @click="createMarkdown">Make Markdown</v-btn>
-      <v-spacer></v-spacer>
 
       <v-btn color="success" @click="handleSubmit">
         Cadastrar
