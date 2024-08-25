@@ -1,98 +1,210 @@
 <template>
-  <main>
+  <v-container class=" text-center">
+    <v-row align="center" class="" justify="center">
+      <template v-for="(item, i) in items" :key="i">
+        <v-col cols="12" md="4">
+          <v-hover v-slot="{ isHovering, props }">
+            <v-card
+              :class="{ 'on-hover': isHovering }"
+              :elevation="isHovering ? 12 : 2"
+              v-bind="props"
+              :to="item.link"
+                          rounded="xl"
+            >
+              <v-img :src="item.img" height="425px" cover>
+                <v-card-title class="text-h6 text-white d-flex flex-column">
+                  <p class="mt-4">
+                    {{ item.title }}
+                  </p>
 
-    <ContentList path="/articles/foodrating/parmegianologo" v-slot="{ list }">
-      <data-iterator :articles="list" title="Parmegianas"/>
-    </ContentList>
-    <ContentList path="/articles/foodrating/vinhos" v-slot="{ list }">
-      <data-iterator :articles="list" title="Vinhos"/>
-    </ContentList>
-    <ContentList path="/articles/dev" v-slot="{ list }">
-      <data-iterator :articles="list" title="Dev"/>
-    </ContentList>
-    <ContentList path="/articles/linguagens" v-slot="{ list }">
-      <data-iterator :articles="list" title="Linguagens"/>
-    </ContentList>
+                  <div>
+                    <p class="ma-0 text-body-1 font-weight-bold">
+                      {{ item.text }}
+                    </p>
+                    <p class="text-caption font-weight-medium">
+                      {{ item.subtext }}
+                    </p>
+                  </div>
+                </v-card-title>
+              </v-img>
+            </v-card>
+          </v-hover>
+        </v-col>
+      </template>
+    </v-row>
+    <v-row>
+      <v-col cols="12" md="8">
+        <v-sheet
+            class="mx-auto"
+            rounded="xl"
+            border
+          >
+            <div class="pa-4">
+        <div class="text-h6">Procurar por data</div>
 
+          <v-timeline align="start" side="end">
+    <v-timeline-item
+      dot-color="pink"
+      size="small"
+    >
+      <div class="d-flex">
+        <strong class="me-4">5pm</strong>
+        <div>
+          <strong>New Icon</strong>
+          <div class="text-caption">
+            Mobile App
+          </div>
+        </div>
+      </div>
+    </v-timeline-item>
 
-  </main>
+    <v-timeline-item
+      dot-color="teal-lighten-3"
+      size="small"
+    >
+      <div class="d-flex">
+        <strong class="me-4">3-4pm</strong>
+        <div>
+          <strong>Design Stand Up</strong>
+          <div class="text-caption mb-2">
+            Hangouts
+          </div>
+        </div>
+      </div>
+    </v-timeline-item>
+
+    <v-timeline-item
+      dot-color="pink"
+      size="small"
+    >
+      <div class="d-flex">
+        <strong class="me-4">12pm</strong>
+        <div>
+          <strong>Lunch break</strong>
+        </div>
+      </div>
+    </v-timeline-item>
+
+    <v-timeline-item
+      dot-color="teal-lighten-3"
+      size="small"
+    >
+      <div class="d-flex">
+        <strong class="me-4">9-11am</strong>
+        <div>
+          <strong>Finish Home Screen</strong>
+          <div class="text-caption">
+            Web App
+          </div>
+        </div>
+      </div>
+    </v-timeline-item>
+  </v-timeline>
+  </div>
+
+        
+          </v-sheet>
+      </v-col>
+      <v-col cols="12" md="4">
+        <v-sheet
+            class="mx-auto"
+            max-width="400"
+            rounded="xl"
+            border
+          >
+            <div class="pa-4">
+        <div class="text-h6">Procurar por tag</div>
+          <v-chip-group class="mt-3" column>
+            <v-chip
+              v-for="topic in topics"
+              :key="topic"
+              :text="topic"
+              :value="topic"
+              :to="`tags/${topic}`"
+            ></v-chip>
+          </v-chip-group>
+            </div>
+        
+          </v-sheet>
+      </v-col>
+    </v-row>
+  </v-container>
+
 </template>
 
 <script setup>
 
+const topics = [
+        '🎤 Advice',
+        '🐕 Animals',
+        '🤖 Anime',
+        '🎨 Art & Design',
+        '💄 Beauty',
+        '🏢 Business',
+        '📚 Books',
+        '💡 Damn That\'s Interesting',
+        '💃 Hobbies',
+        '🎮 Gaming',
+        '🎥 Movies',
+        '🎵 Music',
+        '📺 TV',
+        '🌮 Food',
+        '😂 Funny',
+        '💖 Health & Lifestyle',
+        '🎓 School',
+        '📰 News',
+        '🌲 Nature',
+        '🎨 Photography',
+        '🎏 Sports',
+      ]
+     const items = [
+        {
+          title: 'Parmegianologo',
+          text: `Avaliacao de parmegianas`,
+          link: 'foodrating/parmegianologo',
+          img: 'https://cdn.vuetifyjs.com/docs/images/cards/hands.jpg',
+        },
+        {
+          title: 'Dev e Engenharia',
+          text: 'Softwares e cálculos',
+          link: 'dev',
+          img: 'https://cdn.vuetifyjs.com/docs/images/cards/concert.jpg',
+        },
+        {
+          title: 'Linguagens',
+          text: 'Aprendendo novos idiomas',
+          link: 'linguagens',
+          img: 'https://cdn.vuetifyjs.com/docs/images/cards/singer.jpg',
+        },
+        {
+          title: 'Outros',
+          text: 'Diversos assuntos',
+          link: 'outros',
+          img: 'https://cdn.vuetifyjs.com/docs/images/cards/singer.jpg',
+        },
+        {
+          title: 'Destacados',
+          text: 'Meus favoritos',
+          link: 'Destaques',
+          img: 'http://lorempixel.com.br/500/500/',
+        }
+      ]
+       const transparent = 'rgba(255, 255, 255, 0)'
+
 const description =
   "All of my long-form thoughts on programming, user interfaces, product design, and more, collected in chronological order.";
 useSeoMeta({
-  title: "Articles | Fayaz Ahmed",
+  title: "Articles | Boloko",
   description,
 });
 
-const query = { path: '/foodrating/parmegianologo', sort: [{ date: -1 }] }
+const vinhos = { path: '/foodrating/vinhos', sort: [{ date: -1 }] }
 // const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
 const articlesQuery = queryContent('articles')
 
 
-const { data: articles } = await useAsyncData("all-articles", () =>
-  queryContent("/articles").sort({ published: -1 }).find()
+const { data: parmes } = await useAsyncData("parmes", () =>
+  queryContent("/articles/foodrating/parmegianologo").sort({ published: -1 }).find()
 );
-
-const games = [
-        {
-          img: 'https://cdn.vuetifyjs.com/docs/images/graphics/games/4.png',
-          title: 'The Sci-Fi Shooter Experience',
-          subtitle: 'Dive into a futuristic world of intense battles and alien encounters.',
-          advanced: false,
-          duration: '8 minutes',
-        },
-        {
-          img: 'https://cdn.vuetifyjs.com/docs/images/graphics/games/2.png',
-          title: 'Epic Adventures in Open Worlds',
-          subtitle: 'Embark on a journey through vast, immersive landscapes and quests.',
-          advanced: true,
-          duration: '10 minutes',
-        },
-        {
-          img: 'https://cdn.vuetifyjs.com/docs/images/graphics/games/3.png',
-          title: 'Surviving the Space Station Horror',
-          subtitle: 'Navigate a haunted space station in this chilling survival horror game.',
-          advanced: false,
-          duration: '9 minutes',
-        },
-        {
-          img: 'https://cdn.vuetifyjs.com/docs/images/graphics/games/5.png',
-          title: 'Neon-Lit High-Speed Racing Thrills',
-          subtitle: 'Experience adrenaline-pumping races in a futuristic, neon-soaked city.',
-          advanced: true,
-          duration: '12 minutes',
-        },
-        {
-          img: 'https://cdn.vuetifyjs.com/docs/images/graphics/games/6.png',
-          title: 'Retro-Style Platformer Adventures',
-          subtitle: 'Jump and dash through pixelated worlds in this classic-style platformer.',
-          advanced: false,
-          duration: '11 minutes',
-        },
-        {
-          img: 'https://cdn.vuetifyjs.com/docs/images/graphics/games/7.png',
-          title: 'Medieval Strategic War Campaigns',
-          subtitle: 'Lead armies into epic battles and conquer kingdoms in this strategic game.',
-          advanced: true,
-          duration: '10 minutes',
-        },
-        {
-          img: 'https://cdn.vuetifyjs.com/docs/images/graphics/games/1.png',
-          title: 'Underwater VR Exploration Adventure',
-          subtitle: 'Dive deep into the ocean and discover the mysteries of the underwater world.',
-          advanced: true,
-          duration: '11 minutes',
-        },
-        {
-          img: 'https://cdn.vuetifyjs.com/docs/images/graphics/games/8.png',
-          title: '1920s Mystery Detective Chronicles',
-          subtitle: 'Solve crimes and uncover secrets in the glamourous 1920s era.',
-          advanced: false,
-          duration: '9 minutes',
-        },
-      ]
 </script>

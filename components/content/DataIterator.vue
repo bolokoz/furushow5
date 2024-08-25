@@ -33,11 +33,11 @@ const props = defineProps({
                 md="4"
               >
                 <v-card class="pb-3" border flat>
-                  <v-img :src="item.raw.thumbnail"></v-img>
+                  <v-img :src="item.raw?.images"></v-img>
   
                   <v-list-item :subtitle="item.raw.description" class="mb-2">
                     <template v-slot:title>
-                      <strong class="text-h6 mb-2">{{ item.raw.name }}</strong>
+                      <strong class="text-h6 mb-2">{{ item.raw.title }}</strong>
                     </template>
                   </v-list-item>
   

@@ -39,6 +39,7 @@
       >
         <!--  -->
       </v-navigation-drawer>
+
   
       <v-main class="bg-grey-lighten-2">
             <slot/>
