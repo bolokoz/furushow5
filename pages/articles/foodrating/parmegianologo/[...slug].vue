@@ -21,7 +21,7 @@
   <script setup>
   const route = useRoute();
   
-  const { data: page } = await useAsyncData('my-page', queryContent(route.path).findOne)
+  const { data: page } = await useAsyncData('page', queryContent(route.path).findOne)
   
   </script>
   <style>
