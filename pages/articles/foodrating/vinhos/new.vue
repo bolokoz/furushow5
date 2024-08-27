@@ -75,9 +75,11 @@ title: ${form?.title}
 date: ${form?.date}
 price: ${form?.price}
 restaurant: ${form?.restaurant}
+uva: ${form?.uva}
+adega: ${form?.adega}
 year: ${form.year}
 country: ${form.country}
-rating_personal: ${form.rating_personal}
+rating: ${form.rating}
 description: ${form.description}
 images: [${imagesURL}]
 ---`;
@@ -93,7 +95,7 @@ const PATH = "content/articles/foodrating/vinhos";
 
 async function handleSubmit() {
   let contentBase64 = btoa(createMarkdown());
-  let filename = form.title.trim().replace(/ /g, "-");
+  let filename = form.title.trim().replace(/ /g, "_")+ '_' + form.uva.trim().replace(/ /g, "_");
   await fetch(
     `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${PATH}/${filename}.md`,
     {
@@ -141,7 +143,7 @@ async function handleSubmit() {
         required
       ></v-text-field>
       <v-date-picker v-model="form.date"></v-date-picker>
-      <v-text-field v-model="form.grape" label="Uva tipo"></v-text-field>
+      <v-text-field v-model="form.uva" label="Uva tipo"></v-text-field>
       <v-text-field v-model="form.adega" label="Adega"></v-text-field>
       <v-text-field v-model="form.country" label="Pais"></v-text-field>
       <v-text-field

@@ -25,7 +25,7 @@
             </v-card-item>
   
             <v-card-text>
-              <v-data-table :headers="headers" :items="vinhos">
+              <v-data-table :headers="headers" :items="vinhos" items-per-page="5">
                 <template v-slot:item.calories="{ value }">
                   <v-chip :color="getColor(value)">
                     {{ value }}
@@ -41,9 +41,9 @@
           ></v-img>
         </v-card>
       </template>
-                <template v-slot:item.score="{ item }">
+                <template v-slot:item.rating="{ item }">
         <v-rating
-          :model-value="item.score"
+          :model-value="item.rating"
           length="2"
           color="orange-darken-2"
           density="compact"
@@ -115,13 +115,13 @@
   
   const headers = [
     { title: "Vinho", key: "title" },
-    { title: "Score", key: "score" },
+    { title: "Score", key: "rating" },
     { title: "Imagem", key: "images" },
     { title: "Uva", key: "uva" },
     { title: "Origem", key: "country" },
     { title: "Adega", key: "adega" },
     { title: "Ano", key: "year" },
-    { title: "Preço (R$)", key: "Price" },
+    { title: "Preço (R$)", key: "price" },
     { title: "Restaurante", key: "restaurante" },
     { title: "Ver", key: "_path" },
   ];
