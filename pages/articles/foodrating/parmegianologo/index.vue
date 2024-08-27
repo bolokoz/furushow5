@@ -5,8 +5,8 @@
         <v-card color="primary" variant="tonal" elevation="3" rounded="xl">
           <v-card-item>
             <div>
-              <div class="text-overline mb-1">Avaliacao de parmegianas</div>
-              <div class="text-h3 mb-6">Parmegianologo</div>
+              <div class="text-overline mb-1">Avaliação de Parmegianas</div>
+              <div class="text-h3 mb-6">Parmegianólogo</div>
             </div>
           </v-card-item>
         </v-card>
@@ -34,6 +34,16 @@
               <template v-slot:item._path="{ value }">
                 <v-btn color="primary" variant="tonal" :to="value"> Ver </v-btn>
               </template>
+              <template v-slot:item.rating="{ item }">
+                <v-rating
+                  :model-value="item.rating"
+                  length="3"
+                  color="orange-darken-2"
+                  density="compact"
+                  size="small"
+                  readonly
+                ></v-rating>
+              </template>
             </v-data-table>
           </v-card-text>
         </v-card>
@@ -48,35 +58,49 @@
 
               <div class="text-h3 mb-6">Criterios de availiacao</div>
 
-              <div class="text-caption">critério versão 2 - 08/2024</div>
+              <div class="text-caption">
+                critério versão 2 - 08/2024 - média ponderada entre os diversos
+                aspectos com maior consideração para carne e molho. Notas de 0 a
+                3 para caso uma das notas não influenciarem demasiadamente na
+                média
+              </div>
 
-              <div class="text-h4">
+              <div class="text-h5 ml-6">
+                Score = [(Carne + Molho) * 2 + (Crosta + Acompanhamentos + Valor
+                + Apresentação)] / 6
+              </div>
 
-                Score = [(Carne + Molho) * 2 + (Crosta + Acompanhamentos + Valor + Apresentação)] / 6
-
-                
-            </div>
-            <ContentDoc path="articles/foodrating/parmegianologo/criterio_v2" />
+              <p class="text-overline ml-6">Notas individuais de 0 a 3, sendo:</p>
+              <p class="text-overline ml-6">0 = RUIM</p>
+              <p class="text-overline ml-6">1 = Abaixo da média</p>
+              <p class="text-overline ml-6">2 = Acima da média</p>
+              <p class="text-overline ml-6">3 = Recomendado</p>
             </div>
           </v-card-item>
           <v-card-text>
-
-
             <v-row dense>
-                <v-col cols="12" md=4                     v-for="item in criterio_v1">
-                    <v-card
-
-                    variant="tonal"
-                    class="ma-2 mx-auto"
-                    max-width="344"
-                    :title="item.title"
-                    :subtitle="item.subtitle"
-                    :text="item.text"
-                    >
+              <v-col cols="12" md="4" v-for="item in criterio_v1">
+                <v-card
+                  variant="tonal"
+                  class="ma-2 mx-auto"
+                  max-width="344"
+                  :title="item.title"
+                  :subtitle="item.subtitle"
+                  :text="item.text"
+                >
                 </v-card>
-                
-            </v-col>
-        </v-row>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col>
+                <!-- <div class="text-caption">
+                critério versão 2 - 08/2024 - média ponderada entre os diversos
+                aspectos com maior consideração para carne e molho. Notas de 0 a
+                3 para caso uma das notas não influenciarem demasiadamente na
+                média
+              </div> -->
+              </v-col>
+            </v-row>
           </v-card-text>
         </v-card>
       </v-col>
@@ -92,45 +116,48 @@ const { data: parmegianas } = await useAsyncData("parmegianas", () =>
 const headers = [
   { title: "Restaurante", key: "title" },
   { title: "Score", key: "rating" },
-  { title: "Preço (R$)", key: "Price" },
-  { title: "Carne e Crosta", key: "rating_carne" },
-  { title: "Acompanhamentos", key: "rating_acompanhamentos" },
+  { title: "Carne", key: "rating_carne" },
   { title: "Molho e queijos", key: "rating_molho" },
+  { title: "Crosta", key: "rating_crosta" },
+  { title: "Acompanhamentos", key: "rating_acompanhamentos" },
+  { title: "Mais Valia", key: "rating_maisvalia" },
+  { title: "Apresentação", key: "rating_apresentacao" },
+  { title: "Preço (R$)", key: "Price" },
   { title: "Ver", key: "_path" },
 ];
 
 const criterio_v1 = [
-    {
-        title: 'Carne',
-        subtitle: 'Peso 2',
-        text: 'Considera a suculencia, maciez, sabor, sal'
-    },
-    {
-        title: 'Molho e queijo',
-        subtitle: 'Peso 2',
-        text: 'Considera a suculencia, maciez, sabor, sal'
-    },
-    {
-        title: 'Crosta',
-        subtitle: 'Peso 1',
-        text: 'Considera a suculencia, maciez, sabor, sal'
-    },
-    {
-        title: 'Acompanhamentos',
-        subtitle: 'Peso 1',
-        text: 'Considera a suculencia, maciez, sabor, sal'
-    },
-    {
-        title: 'Valor',
-        subtitle: 'Peso 1',
-        text: 'Considera a suculencia, maciez, sabor, sal'
-    },
-    {
-        title: 'Apresentação e restaurante',
-        subtitle: 'Peso 1',
-        text: 'Considera a suculencia, maciez, sabor, sal'
-    },
-]
+  {
+    title: "Carne",
+    subtitle: "Peso 2",
+    text: "Considera a suculencia, maciez, sabor, sal",
+  },
+  {
+    title: "Molho e queijo",
+    subtitle: "Peso 2",
+    text: "Sabor, acidez, presença",
+  },
+  {
+    title: "Crosta",
+    subtitle: "Peso 1",
+    text: "Crocância apesar do molho, consistência",
+  },
+  {
+    title: "Acompanhamentos",
+    subtitle: "Peso 1",
+    text: "Harmonia e preparos individuais",
+  },
+  {
+    title: "Valor",
+    subtitle: "Peso 1",
+    text: "Mais valia",
+  },
+  {
+    title: "Apresentação e restaurante",
+    subtitle: "Peso 1",
+    text: "Aparência do prato, ambiente e atendimento",
+  },
+];
 
 function getColor(score) {
   if (score > 2) return "green";

@@ -9,11 +9,9 @@ const snackbar = ref(false)
 const snackbarText = ref('')
 
 const tickLabels = {
-  1: "Ruim",
-  2: "Abaixo",
-  3: "Acima",
-  4: "Recomend",
-  5: "Top",
+  0: "Ruim",
+  1: "Abaixo",
+  2: "Acima"
 };
 
 // cloudinary shenanigans
@@ -143,6 +141,14 @@ async function handleSubmit() {
         required
       ></v-text-field>
       <v-date-picker v-model="form.date"></v-date-picker>
+      <v-text-field v-model="form.grape" label="Uva tipo"></v-text-field>
+      <v-text-field v-model="form.adega" label="Adega"></v-text-field>
+      <v-text-field v-model="form.country" label="Pais"></v-text-field>
+      <v-text-field
+        v-model.number="form.year"
+        label="Ano"
+        type="number"
+      ></v-text-field>
       <v-text-field
         v-model.number="form.price"
         label="Price"
@@ -150,24 +156,16 @@ async function handleSubmit() {
         prefix="R$"
       ></v-text-field>
       <v-text-field v-model="form.restaurant" label="Restaurant"></v-text-field>
-      <v-text-field
-        v-model.number="form.year"
-        label="Ano"
-        type="number"
-      ></v-text-field>
-      <v-text-field v-model="form.country" label="Pais"></v-text-field>
-      <v-text-field v-model="form.grape" label="Uva tipo"></v-text-field>
       <div class="text-caption">
-        rating_restaurante - {{ form.rating_restaurante }}
+        rating - {{ form.rating }}
       </div>
       <v-slider
         v-model="form.rating_restaurante"
         show-ticks="always"
-        :min="1"
-        :max="5"
+        :min="0"
+        :max="2"
         step="1"
-        tick-size="4"
-        :ticks="tickLabels"
+        tick-size="2"
       ></v-slider>
       <v-textarea label="Observacoes" v-model="form.description"></v-textarea>
 

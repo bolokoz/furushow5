@@ -129,9 +129,9 @@ const items = [
     img: "https://cdn.vuetifyjs.com/docs/images/cards/singer.jpg",
   },
   {
-    title: "Outros",
-    text: "Diversos assuntos",
-    link: "/articles/outros",
+    title: "Vinhos",
+    text: "Iniciando no mundo dos vinhos",
+    link: "/articles/foodrating/vinhos",
     img: "https://cdn.vuetifyjs.com/docs/images/cards/singer.jpg",
   },
   {
