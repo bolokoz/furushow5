@@ -1,27 +1,29 @@
 <template>
-    <main class="">
-      Vinho: {{ page.title }}
-      <ContentDoc>
-        <template v-slot="{ doc }">
-          <article>
-            <h1>{{ doc.title }}</h1>
-            <ContentRenderer :value="doc" />
-          </article>
-        </template>
-        <template #not-found>
-          <h1>Document not found</h1>
-        </template>
-        <template #empty>
-          <h1>Documento vazio</h1>
-        </template>
-      </ContentDoc>
-    </main>
+    <v-container fluid class="mt-2">
+      <v-row>
+        <v-col cols="12" md="6">
+          <v-card color="primary" variant="tonal" elevation="3" rounded="xl">
+            <v-card-item>
+              <div>
+                <div class="text-overline mb-1">Avaliacao de vinhos</div>
+                <div class="text-h3 mb-6">Vinhos</div>
+              </div>
+            </v-card-item>
+            <v-card-actions>
+              <v-btn to="/articles">Voltar para side projects</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+
+      <FoodratingVinhoCard :vinho="page" />
+    </v-container>
   </template>
   
   <script setup>
   const route = useRoute();
   
-  const { data: page } = await useAsyncData('my-page', queryContent(route.path).findOne)
+  const { data: page } = await useAsyncData('doc',() => queryContent(route.path).findOne())
   
   </script>
   <style>
