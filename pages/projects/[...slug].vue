@@ -11,20 +11,20 @@
       </ContentDoc>
     </div>
     <div>
-    <ul v-if="toc && toc.links">
+    <!-- <ul v-if="toc && toc.links">
       <li v-for="link in toc.links" :key="link.text">
         <a :href="`#${link.id}`">
           {{ link.text }}
         </a>
       </li>
-    </ul>
+    </ul> -->
   </div>
   </main>
 </template>
 <script setup>
 const route = useRoute();
 const { slug } = route.params;
-const { toc } = useContent()
+// const { toc } = useContent()
 useSeoMeta({
   ogImage: `https://fayazahmed.com/articles/${slug}.png`,
   twitterCard: "summary_large_image",
