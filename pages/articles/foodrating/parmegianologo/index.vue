@@ -9,6 +9,9 @@
               <div class="text-h3 mb-6">Parmegianólogo</div>
             </div>
           </v-card-item>
+          <v-card-actions>
+              <v-btn to="/articles">Voltar para side projects</v-btn>
+            </v-card-actions>
         </v-card>
       </v-col>
     </v-row>

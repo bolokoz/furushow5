@@ -162,7 +162,7 @@ async function handleSubmit() {
         rating - {{ form.rating }}
       </div>
       <v-slider
-        v-model="form.rating_restaurante"
+        v-model="form.rating"
         show-ticks="always"
         :min="0"
         :max="2"

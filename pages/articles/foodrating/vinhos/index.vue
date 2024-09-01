@@ -54,6 +54,9 @@
           readonly
         ></v-rating>
       </template>
+                <template v-slot:item.price="{ item }">
+                  {{ checkNumber(item.price) }}
+      </template>
               </v-data-table>
             </v-card-text>
           </v-card>
@@ -124,7 +127,7 @@
     { title: "Adega", key: "adega" },
     { title: "Ano", key: "year" },
     { title: "Preço (R$)", key: "price" },
-    { title: "Restaurante", key: "restaurante" },
+    { title: "Restaurante", key: "restaurant" },
     { title: "Ver", key: "_path" },
   ];
   
@@ -172,5 +175,9 @@
     }
   } else return "http://lorempixel.com.br/500/500";
 }
+
+  function checkNumber(value){
+    return Number.isInteger(value) ? value : 0
+  }
   </script>
   

@@ -7,7 +7,7 @@ uva: Merlot
 adega: Chandon Argentina
 year: 2023
 country: Argentina
-rating: undefined
+rating: 1
 description: undefined
 images: [http://res.cloudinary.com/boloko/image/upload/v1725220554/furushow5/parmegianologo/20240715_194913_tsjjo1.jpg]
 ---
