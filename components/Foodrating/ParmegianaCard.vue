@@ -6,11 +6,19 @@
               {{ parmegiana.title }}
             </v-card-title>
             <v-card-subtitle> Data: {{ parmegiana.date }} </v-card-subtitle>
+            <v-card-image>
+              <v-carousel v-if="(Array.isArray(parmegiana.images) && parmegiana.images.length > 0)">
+  <v-carousel-item v-for="image in parmegiana.images"
+    :src="image"
+    cover
+  ></v-carousel-item>
+</v-carousel>
+            </v-card-image>
             <v-card-text>
               <RadarChart :parmegiana="parmegiana"/>
               <div class="my-4 text-subtitle-1">Acompanhamentos: {{ parmegiana.acompanhamentos }}</div>
-              <div class="my-4 text-subtitle-1">Preço: {{ parmegiana.price }}</div>
-              <div class="my-4 text-subtitle-1">Serve quantos: {{ parmegiana.porcao }}</div>
+              <div class="my-4 text-subtitle-1">Preço: R$ {{ parmegiana.price }}</div>
+              <div class="my-4 text-subtitle-1">Serve quantos: {{ parmegiana.portion }}</div>
               <div class="my-4 text-subtitle-1">
                 <!-- R$ {{ parmegiana.price }} consumido no restaurante: -->
               </div>
