@@ -69,7 +69,7 @@
               </div>
 
               <div class="text-h5 ml-6">
-                Score = [(Carne + Molho) * 2 + (Crosta + Acompanhamentos + Valor
+                Score = [(Carne e crosta + Molho e queijo) * 2 + (Acompanhamentos + Valor
                 + Apresentação)] / 6
               </div>
 
@@ -94,14 +94,29 @@
                 </v-card>
               </v-col>
             </v-row>
-            <v-row>
-              <v-col>
-                <!-- <div class="text-caption">
-                critério versão 2 - 08/2024 - média ponderada entre os diversos
-                aspectos com maior consideração para carne e molho. Notas de 0 a
-                3 para caso uma das notas não influenciarem demasiadamente na
-                média
-              </div> -->
+            <v-divider inset class="my-12"></v-divider>
+            <v-row dense>
+              <v-col cols="4">
+                <v-card
+                variant="tonal"
+                color="primary"
+                class="mx-6"
+                
+                >
+                <v-card-title>
+                  Como entender o gráfico
+                  </v-card-title>
+                  <v-card-text>
+                    Carne e molho tem peso 2, por isso aparecem 2 vezes
+                  </v-card-text>
+                  <v-card-text>
+                    O tamanho da área representa o SCORE total
+
+                  </v-card-text>
+                </v-card>
+              </v-col>
+              <v-col cols="8">
+                <radar-chart></radar-chart>
               </v-col>
             </v-row>
           </v-card-text>
@@ -119,9 +134,9 @@ const { data: parmegianas } = await useAsyncData("parmegianas", () =>
 const headers = [
   { title: "Restaurante", key: "title" },
   { title: "Score", key: "rating" },
-  { title: "Carne", key: "rating_carne" },
+  { title: "Carne e crosta", key: "rating_carne" },
   { title: "Molho e queijos", key: "rating_molho" },
-  { title: "Crosta", key: "rating_crosta" },
+  // { title: "Crosta", key: "rating_crosta" },
   { title: "Acompanhamentos", key: "rating_acompanhamentos" },
   { title: "Mais Valia", key: "rating_maisvalia" },
   { title: "Apresentação", key: "rating_apresentacao" },
@@ -131,19 +146,14 @@ const headers = [
 
 const criterio_v1 = [
   {
-    title: "Carne",
+    title: "Carne e crosta",
     subtitle: "Peso 2",
-    text: "Considera a suculencia, maciez, sabor, sal",
+    text: "Considera a suculencia, maciez, sabor, sal. Crocância da crosta e consistência",
   },
   {
     title: "Molho e queijo",
     subtitle: "Peso 2",
     text: "Sabor, acidez, presença",
-  },
-  {
-    title: "Crosta",
-    subtitle: "Peso 1",
-    text: "Crocância apesar do molho, consistência",
   },
   {
     title: "Acompanhamentos",

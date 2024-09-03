@@ -7,14 +7,12 @@
             </v-card-title>
             <v-card-subtitle> Data: {{ parmegiana.date }} </v-card-subtitle>
             <v-card-text>
-              <RadarChart />
-
-              <BarChart />
-              <div class="my-4 text-subtitle-1">Uva: {{ parmegiana.acompanhamentos }}</div>
-              <div class="my-4 text-subtitle-1">Pais: {{ parmegiana.price }}</div>
-              <div class="my-4 text-subtitle-1">Produtor: {{ parmegiana.porcao }}</div>
+              <RadarChart :parmegiana="parmegiana"/>
+              <div class="my-4 text-subtitle-1">Acompanhamentos: {{ parmegiana.acompanhamentos }}</div>
+              <div class="my-4 text-subtitle-1">Preço: {{ parmegiana.price }}</div>
+              <div class="my-4 text-subtitle-1">Serve quantos: {{ parmegiana.porcao }}</div>
               <div class="my-4 text-subtitle-1">
-                R$ {{ parmegiana.price }} consumido no restaurante:
+                <!-- R$ {{ parmegiana.price }} consumido no restaurante: -->
               </div>
             </v-card-text>
             <v-card-actions>
