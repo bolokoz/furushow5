@@ -5,11 +5,12 @@
       class="px-1"
       elevation="4"
       scroll-behavior="hide"
+      dense
     >
-      <v-avatar
+      <v-btn
         color="grey-darken-1"
         size="32"
-      >bolokos</v-avatar>
+      >bolokos</v-btn>
 
       <v-spacer></v-spacer>
 
