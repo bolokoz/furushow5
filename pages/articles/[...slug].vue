@@ -9,7 +9,7 @@
       <v-container fluid>
         <v-row dense>
           <v-col cols="12" md="9">
-            <v-sheet color="secondary"  class="ma-2 pa-2" rounded="xl">
+            <v-sheet  class="ma-2 pa-2 overflow-hidden" rounded="xl">
               <ContentDoc>
                 <template v-slot="{ doc }">
                   <article>
@@ -28,7 +28,7 @@
           </v-col>
           <v-col md="3">
             <v-sheet color="primary" class="ma-2 pa-2" rounded="xl">
-              <h1>TOC </h1>
+              <TOC :content="page" :activeTocId="activeTocId"/>
             </v-sheet>
           </v-col>
         </v-row>
@@ -38,8 +38,11 @@
 </template>
 
 <script setup>
+import TOC from '~/components/TOC.vue';
+
 const route = useRoute();
 const breadcrumbs = useBreadcrumbs(route.path)
+const activeTocId = ref(null)
 // const leftDrawer = ref(false);
 // const rightDrawer = ref(false);
 
