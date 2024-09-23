@@ -1,12 +1,13 @@
-[<img src="https://github.com/user-attachments/assets/60e89805-26fd-4074-8ced-447fb148c7e6">](http://supersaas.dev?ref=github)
+## Tailwind blocks
+https://tailspark.co/components?category=marketing&component=Portfolio
 
+https://tailblocks.cc/
 
-# Zooper
+https://flowrift.com/c/collections/Q2nxd?view=preview
 
-Zooper is a beautiful personal portfolio template for developers, programmers, freelancers and designers.
+https://preline.co/examples/blog-sections.html
 
-![Zooper template home preview](https://zooper.pages.dev/preview.jpg)
-
+https://flowbite.com/blocks/
 
 ## Features
 
