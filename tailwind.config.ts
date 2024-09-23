@@ -7,7 +7,9 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
     "./app.vue",
+    "./node_modules/flowbite/**/*.{js,ts}"
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       boxShadow: {
@@ -15,6 +17,9 @@ module.exports = {
         zoopdark:
           "rgba(10, 10, 10, 0.2) 0px 1.2672px 1.2672px 0px, rgba(10, 10, 10, 0.2) 0px 5.06879px 10.1376px 0px",
       },
+      colors: {
+        primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+      }
     },
     fontFamily: {
       sans: [
@@ -47,5 +52,5 @@ module.exports = {
       ],
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"),  require('flowbite/plugin')],
 } satisfies Config;

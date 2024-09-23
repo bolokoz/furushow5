@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     // "@nuxtjs/fontaine",
     "@nuxt/image",
     "@nuxt/content",
+    "@nuxtjs/tailwindcss",
     // "@nuxthq/studio",
     "@vueuse/nuxt",
     (_options, nuxt) => {

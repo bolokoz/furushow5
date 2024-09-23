@@ -42,7 +42,6 @@ watchDebounced(
 <template>
   <div class="max-h-82 overflow-auto">
     <h4>Table of Contents</h4>
-    {{ props.content.body.toc }}
     <nav class="mt-4 flex">
       <div class="relative w-0.5 overflow-hidden rounded bg-secondary">
         <div    

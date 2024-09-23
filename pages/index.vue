@@ -1,9 +1,26 @@
 <template>
-  <v-container class="text-center">
-    <v-row align="center" class="" justify="center">
+  <v-container class="">
+    <v-row align="" class="" justify="center">
       <template v-for="(item, i) in items" :key="i">
-        <v-col cols="12" md="4">
+        <v-col cols="12" md="6">
           <v-hover v-slot="{ isHovering, props }">
+            <!-- <v-card
+        color="primary"
+        variant="outlined"
+        class="mx-auto"
+      >
+        <v-card-item>
+          <div>
+            <div class="text-overline mb-1">
+              {{ item.title }}
+            </div>
+            <div class="text-h6 mb-1">
+              {{ item.text }}
+            </div>
+            <div class="text-caption">{{ item.subtext }}</div>
+          </div>
+        </v-card-item>
+      </v-card> -->
             <v-card
               :class="{ 'on-hover': isHovering }"
               :elevation="isHovering ? 12 : 2"
@@ -11,6 +28,8 @@
               :to="item.link"
               rounded="xl"
             >
+
+
               <v-img :src="item.img" height="425px" cover>
                 <v-card-title class="text-h6 text-white d-flex flex-column">
                   <p class="mt-4">
